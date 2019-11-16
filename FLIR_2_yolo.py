@@ -1,9 +1,7 @@
 from __future__ import print_function
-# best model until now
 import argparse
 import glob
 import os
-import sys
 import json
 
 if __name__ == '__main__':
@@ -12,13 +10,8 @@ if __name__ == '__main__':
         "path", help='Directory of json files containing annotations')
     parser.add_argument(
         "output_path", help='Output directory for image.txt files')
-    parser.add_argument("--debug", action="store_true")
     args = parser.parse_args()
     json_files = sorted(glob.glob(os.path.join(args.path, '*.json')))
-    if args.debug:
-        total_count = 0
-        cats = {0: 0, 1: 0, 2: 0}
-        bike_images = set()
 
     for json_file in json_files:
         with open(json_file) as f:
@@ -26,7 +19,6 @@ if __name__ == '__main__':
             images = data['images']
             annotations = data['annotations']
 
-            # file_name = images['file_name']
             file_names = []
             for i in range(0, len(images)):
                 file_names.append(images[i]['file_name'])
