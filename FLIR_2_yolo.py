@@ -47,6 +47,6 @@ if __name__ == '__main__':
                 image_name = images[i]['file_name']
                 image_name = image_name[14:-5]
                 print(image_name)
-                file = open('./output/' + str(image_name) + '.txt', 'w+')
+                file = open(args.output_path + str(image_name) + '.txt', 'w+')
                 file.write('\n'.join('%d %.6f %.6f %.6f %.6f' % res for res in converted_results))
                 file.close()
